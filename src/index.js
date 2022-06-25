@@ -2,7 +2,8 @@
 import logo from '../images/logo.svg';
 import hamburger from '../images/menu-icon.svg';
 //Style import
-import './style.css';
+import './style/style.css';
+import './style/headline.css';
 
 const logoEl = document.querySelector('.logo');
 logoEl.src = logo;
