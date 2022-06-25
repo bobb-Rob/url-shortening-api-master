@@ -14,13 +14,95 @@
     --VeryDarkBlue: hsl(255, 11%, 22%);
     --VeryDarkViolet: hsl(260, 8%, 14%);
     --FontSize: 1.125rem;
+    --white: #fff;
     --poppins: 'Poppins', sans-serif;
 }
 
-nav {
-    display: flex;
-    color: #797d77;
+body {
+  font-family: var(--poppins);
 }
+
+.main-container {
+  padding: 0 6%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 6%  0.5rem;
+}
+
+.menu-container {
+  display: none;
+}
+
+.logo {
+    width: 6.25rem;
+}
+
+.logo-link {
+  padding-top: 0.6rem;
+}
+
+.hamburger {
+    width: 25px;
+    display: block;
+    transition: all 1s;
+}
+
+.hamburger-btn {
+    border: none;
+    padding: 0.09rem;
+}
+
+.btn {   
+    height: 2.5rem;
+    width: 6rem;
+    border-radius: 2rem;
+    background-color: var(--Cyan);
+    border: none;
+    font-family: var(--poppins);
+    color: var(--white);
+}
+
+@media screen and (min-width: 375px) {  
+  .main-container {
+    padding: 0 9%;
+  }
+
+  .navbar {
+    padding: 1.5rem 9% .5rem;
+  }  
+
+  .menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 2.5rem;
+  
+  }
+
+  .menu-container  a {  
+    margin-right: 2rem;
+    text-decoration: none;
+    font-family: var(--poppins);
+    color: var(--GrayishViolet);
+    font-weight: 500;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .login-btn {
+    background-color: var(--white);
+    color: var(--GrayishViolet);
+    font-weight: bold;
+  }
+}
+
 
 
 
