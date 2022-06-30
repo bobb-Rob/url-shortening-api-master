@@ -7,15 +7,15 @@
 #link-input {
   margin: 0 0 1rem 0;
   background-color: white;
-  padding-left: 1rem; 
+  padding-left: 1rem;
 }
 
 .cyan {
-    color: var(--Cyan) !important;
+  color: var(--Cyan) !important;
 }
 
 .red {
-    outline:2px solid var(--Red) !important;
+  outline: 2px solid var(--Red) !important;
 }
 
 #url-form button,
