@@ -8,6 +8,7 @@ import iconFullyCustomizable from '../images/icon-fully-customizable.svg';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
+import './style/link.css';
 
 const logoEl = document.querySelector('.logo');
 logoEl.src = logo;
@@ -26,3 +27,16 @@ const [icon1, icon2, icon3] = allStatisticsIcons;
 icon1.src = iconBrandRecog;
 icon2.src = iconDetailedRecords;
 icon3.src = iconFullyCustomizable;
+
+
+
+
+const fetchLink = async (url) => {
+  const response = await fetch(url);
+  return response.json();
+};
+const url = `https://api.shrtco.de/v2/shorten?url=${'https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25597250#overview'}`
+
+fetchLink(url).then(res => {
+    console.log(res)
+})
