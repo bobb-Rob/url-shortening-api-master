@@ -157,7 +157,7 @@
     } 
     
     .statistic-header p {  
-        padding: 0 8rem;
+        padding: 0 3rem;
     }
 }
 
@@ -240,7 +240,7 @@
       }
     
     .statistic-header p {  
-        padding: 0 10rem;
+        padding: 0 25%;
     }
 
     .footer-logo-wrap {

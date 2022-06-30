@@ -1,5 +1,5 @@
 .header-section { 
-    text-align: center;    
+  text-align: center;    
 }
 
 .bg-illustration {
@@ -28,7 +28,7 @@
 @media screen and (min-width: 375px) {
     .header-section h1 {
         color: var(--VeryDarkBlue);
-        font-size: 1.8rem;
+        font-size: 2.8rem;
     }        
 }
 
@@ -36,20 +36,27 @@
 @media screen and (min-width: 764px) {  
     .header-section {
         display: grid;
-        grid-template-columns: 50% 50%;
-        font-size: 3rem;     
+        grid-template-columns: 50% 50%; 
+        padding: 2.4rem 0 0 9%;   
     }
-  
-      .bg-illustration {
-          height: 28rem;            
+        
+    .header-section h1 {
+        color: var(--VeryDarkBlue);
+        font-size: 3.5rem;
+        line-height: 4.2rem;
+    } 
+
+      .header-container {
+        padding: 1.5rem 0 0 0;     
+        text-align: left;        
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;         
       }
-      
-      .header-container {       
-          text-align: left; 
-          border: 1px solid rgb(8, 15, 145);
-          grid-column: 1 / 2;
-          grid-row: 1 / 2;
-          padding-left: 5%;
+
+      .header-container p {
+        color: var(--GrayishViolet);
+        padding: 1rem 0 1.6rem;
+        width: 80%;
       }
 }
   
