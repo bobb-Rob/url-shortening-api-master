@@ -176,8 +176,15 @@
     .footer-heading {
         margin: 0 0;  
     }
-  
+    
+    .boost-link-section {
+        background-image: url(../../images/bg-boost-desktop.svg);
+       background-size: cover;
+    }
 
+    .statistics-icon-wrapper {       
+        left: 47%;
+    }
     
 }
   
