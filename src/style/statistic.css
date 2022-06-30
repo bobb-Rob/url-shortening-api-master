@@ -53,7 +53,8 @@
   padding: 3.5rem 1rem 2.5rem;
   background-color: var(--white);
   border-radius: 6px;
-  position: relative; 
+  position: relative;
+  z-index: 1;
 }
 
 .statistics-icon-wrapper {
@@ -67,16 +68,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1; 
 }
 
-.main-container::before {
+.bar::before {
     content: '';
-    width: 4px;
+    width: 6px;
     height: 50px;
     background-color: var(--Cyan);
     position: absolute;   
-    bottom: 150px;
+    bottom: 44px;
+    z-index: -2;
 }
 
 .statistics-icon-wrapper img {
