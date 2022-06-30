@@ -77,10 +77,6 @@ body {
 
 
 @media screen and (min-width: 375px) {  
-  .main-container {
-    padding: 0 9%;    
-  } 
-
   .menu-container  a {  
     margin-right: 2rem;
     text-decoration: none;

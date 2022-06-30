@@ -34,7 +34,7 @@
   position: absolute;
   height: max-content;
   top: -70px;
-  width: 86vw;
+  width: 88vw;
   left: 0;
  margin: 0 6vw;
 }
@@ -66,14 +66,16 @@
   justify-content: center;
 }
 
-.bar::before {
-    content: '';
-    width: 6px;
-    height: 50px;
-    background-color: var(--Cyan);
-    position: absolute;   
-    bottom: 44px;
-    z-index: -2;
+@media screen and (max-width: 764px) {
+    .bar::before {
+        content: '';
+        width: 6px;
+        height: 50px;
+        background-color: var(--Cyan);
+        position: absolute;   
+        bottom: 44px;
+        z-index: -2;
+    }
 }
 
 .statistics-icon-wrapper img {
@@ -152,14 +154,93 @@
     .get-link-section {         
       width: 82vw;       
       margin: 0 9vw;
-    }      
+    } 
+    
+    .statistic-header p {  
+        padding: 0 8rem;
+    }
 }
 
-@media screen and (min-width: 764px) {  
+@media screen and (min-width: 764px) { 
+    .get-link-section {         
+        width: 82vw;       
+        margin: 0 9vw;
+        padding: 2rem;     
+      } 
+
+    #url-form {
+      display: flex;
+      flex-direction: row;
+      align-items: center; 
+    }
+
+    #url-form input {
+     width: 80%;
+     margin-bottom: 0;
+    }
+
+    #url-form button {
+     width: 18%;
+     margin-left: 2%;
+    }
+
     .app-footer {
         display: flex;
         padding: 2rem 9%;
         text-align: left;
+    }
+
+    .statistics-list {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       column-gap: 20px;
+       margin: 3rem 0;
+      }
+
+    .statistics-list li {
+      margin: 0;
+      height: fit-content;
+    }
+
+    .statistics-list li:nth-child(2) {    
+      margin-top: 3rem;
+    }
+
+    .statistics-list li:nth-child(3) {     
+      margin-top: 6rem;
+    }
+
+    .statistics-icon-wrapper {       
+        top: -40px;
+        left: 2rem !important;     
+        width: 70px;
+        height: 70px;        
+      }
+      
+      .bar-destop1::before {
+          content: '';
+          width: 20px;
+          height: 7px;
+          background-color: var(--Cyan);
+          position: absolute;   
+          bottom: 44px;
+          left: -52px;
+          top: 150px;        
+      }
+
+      .bar-destop2::before {
+          content: '';
+          width: 20px;
+          height: 7px;
+          background-color: var(--Cyan);
+          position: absolute;   
+          bottom: 44px;
+          left: -52px;
+          top: 100px;    
+      }
+    
+    .statistic-header p {  
+        padding: 0 10rem;
     }
 
     .footer-logo-wrap {
