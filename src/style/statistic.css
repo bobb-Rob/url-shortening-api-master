@@ -45,7 +45,7 @@
 
 .statistics-list {
   list-style: none;
-  padding: 5rem 0; 
+  padding: 5rem 0 2rem; 
 }
 
 .statistics-list li {  
@@ -98,13 +98,61 @@
   color: var(--GrayishViolet);
 }
 
+.boost-link-section {
+  height: 300px;
+  background-color: var(--DarkViolet);
+  background-image: url(../../images/bg-boost-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: 100% ;
+  color: var(--white); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+
+.get-started-btn {
+    width: 8rem;
+}
+
+.app-footer {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: var(--VeryDarkViolet);
+  color: var(--white);
+  font-size: var(--fontSize);
+}
+
+.logo-bottom {
+  width: 7rem;
+}
+
+.footer-heading {
+  margin: 1.7rem 0;  
+}
+
+.footer-heading > ul {
+ padding-top: 1rem;
+}
+
+.footer-heading li{
+ color: var(--GrayishViolet);
+}
+
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+
 @media screen and (min-width: 375px) {
     .get-link-section {         
       width: 82vw;       
       margin: 0 9vw;
     }      
 }
-
 
 @media screen and (min-width: 764px) {  
     .header-section {
