@@ -1,0 +1,128 @@
+#url-form {
+ display: flex;
+ flex-direction: column;
+}
+
+#link-input {
+ margin: 0 0 1rem 0;
+ background-color: white;
+ padding-left: 1rem;
+}
+
+#url-form button,#link-input {
+  height: 2.6rem; 
+  border-radius: 6px;
+  border: none;
+  font-family: var(--poppins);  
+}
+
+#url-form button {
+  background-color: var(--Cyan);
+  font-weight: bold;
+  color: var(--white);
+}
+
+
+.get-link-section { 
+  padding: 1.3rem;
+  row-gap: 10px;
+  border-radius: 9px;
+  background-color: var(--DarkViolet);
+  background-image: url("../../images/bg-shorten-mobile.svg");
+  background-repeat: no-repeat;
+  background-position: 100% 0%;
+  position: absolute;
+  height: max-content;
+  top: -70px;
+  width: 86vw;
+  left: 0;
+ margin: 0 6vw;
+}
+
+.analysis-section {
+    padding-top: 5rem;
+}
+
+.statistics-list {
+  list-style: none;
+  padding: 5rem 0; 
+}
+
+.statistics-list li {  
+  margin: 0 0 4rem;
+  padding: 3.5rem 1rem 2.5rem;
+  background-color: var(--white);
+  border-radius: 6px;
+  position: relative; 
+}
+
+.statistics-icon-wrapper {
+  position: absolute;
+  top: -30px;
+  left: 43%;
+  background-color: var(--DarkViolet);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; 
+}
+
+.main-container::before {
+    content: '';
+    width: 4px;
+    height: 50px;
+    background-color: var(--Cyan);
+    position: absolute;   
+    bottom: 150px;
+}
+
+.statistics-icon-wrapper img {
+    width: 30px;
+}
+
+.statistics-list h3 {  
+  color: var(--VeryDarkBlue);
+}
+
+
+.statistic-header {
+  padding-top: 5rem;
+}
+
+.statistic-header p,.statistics-list p {
+  padding-top: 1rem;
+  color: var(--GrayishViolet);
+}
+
+@media screen and (min-width: 375px) {
+    .get-link-section {         
+      width: 82vw;       
+      margin: 0 9vw;
+    }      
+}
+
+
+@media screen and (min-width: 764px) {  
+    .header-section {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        font-size: 3rem;     
+    }
+  
+      .bg-illustration {
+          height: 28rem;            
+      }
+      
+      .header-container {       
+          text-align: left; 
+          border: 1px solid rgb(8, 15, 145);
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+          padding-left: 5%;
+      }
+}
+  
+  

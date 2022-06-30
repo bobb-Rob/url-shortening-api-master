@@ -1,11 +1,24 @@
 
 import logo from '../images/logo.svg';
+import illustrationImg from '../images/illustration-working.svg';
 import hamburger from '../images/menu-icon.svg';
-//Style import
+import iconBrandRecog from '../images/icon-brand-recognition.svg';
+import iconDetailedRecords from '../images/icon-detailed-records.svg';
+import iconFullyCustomizable from '../images/icon-fully-customizable.svg';
 import './style/style.css';
 import './style/headline.css';
+import './style/statistic.css';
 
 const logoEl = document.querySelector('.logo');
 logoEl.src = logo;
 const hamburgerEl = document.querySelector('.hamburger');
 hamburgerEl.src = hamburger;
+
+const illustration = document.querySelector('.bg-illustration > img');
+illustration.src = illustrationImg;
+
+const allStatisticsIcons = document.querySelectorAll('.statistics-icon-wrapper > img');
+const [icon1, icon2, icon3 ] = allStatisticsIcons;
+icon1.src = iconBrandRecog; 
+icon2.src = iconDetailedRecords;
+icon3.src = iconFullyCustomizable;

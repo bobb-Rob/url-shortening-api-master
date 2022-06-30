@@ -10,6 +10,7 @@
     --DarkViolet: hsl(257, 27%, 26%);
     --Red: hsl(0, 87%, 67%);
     --Gray: hsl(0, 0%, 75%);
+    --moreGray: hsl(0, 0%, 92%);
     --GrayishViolet: hsl(257, 7%, 63%);
     --VeryDarkBlue: hsl(255, 11%, 22%);
     --VeryDarkViolet: hsl(260, 8%, 14%);
@@ -24,7 +25,12 @@ body {
 }
 
 .main-container {
-  padding: 0 6%;
+  padding: 5rem 6%;
+  background-color: var(--moreGray);
+  margin-top: 8rem;
+  position: relative;
+  width: 100%;
+  text-align: center;
 }
 
 .navbar {
@@ -55,6 +61,7 @@ body {
 .hamburger-btn {
     border: none;
     padding: 0.09rem;
+    background-color: white;
 }
 
 .btn {   
@@ -71,14 +78,8 @@ body {
 
 @media screen and (min-width: 375px) {  
   .main-container {
-    padding: 0 9%;
-  }
-
-  .navbar {
-    padding: 1.5rem 9% .5rem;
-  }  
-
-  
+    padding: 0 9%;    
+  } 
 
   .menu-container  a {  
     margin-right: 2rem;
@@ -99,6 +100,10 @@ body {
   .hamburger {
     display: none;
   }
+  
+  .navbar {
+    padding: 1.5rem 9% .5rem;
+  }  
 
   .menu-container {
     display: flex;
