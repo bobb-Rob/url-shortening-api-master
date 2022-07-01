@@ -1,35 +1,14 @@
 /* eslint-disable no-useless-escape */
 
-import logoBottom from '../images/logo-bottom.svg';
-import logo from '../images/logo.svg';
-import illustrationImg from '../images/illustration-working.svg';
-import hamburger from '../images/menu-icon.svg';
-import iconBrandRecog from '../images/icon-brand-recognition.svg';
-import iconDetailedRecords from '../images/icon-detailed-records.svg';
-import iconFullyCustomizable from '../images/icon-fully-customizable.svg';
+import insertImages from './modules/images';
 import uniqid from 'uniqid';
+import store from './modules/localStorage';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
 import './style/link.css';
 
-const logoEl = document.querySelector('.logo');
-logoEl.src = logo;
-
-const bottomLogoEl = document.querySelector('.logo-bottom');
-bottomLogoEl.src = logoBottom;
-
-const hamburgerEl = document.querySelector('.hamburger');
-hamburgerEl.src = hamburger;
-
-const illustration = document.querySelector('.bg-illustration > img');
-illustration.src = illustrationImg;
-
-const allStatisticsIcons = document.querySelectorAll('.statistics-icon-wrapper > img');
-const [icon1, icon2, icon3] = allStatisticsIcons;
-icon1.src = iconBrandRecog;
-icon2.src = iconDetailedRecords;
-icon3.src = iconFullyCustomizable;
+insertImages();
 
 const linkCard = (longlink, shortlink) => {
   const element = `
@@ -43,6 +22,16 @@ const linkCard = (longlink, shortlink) => {
   document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
 };
 
+const insertloading = () => {
+    const element = `
+    <div class='loader-wrapper'>
+      <div class="loader"></div>
+    </div>`;
+    document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
+}
+
+const removeloading = () => document.querySelector('.loader-wrapper').remove();
+
 const insertErrorMsg = (msg) => {
   document.querySelector('.get-link-section')
     .insertAdjacentHTML('afterbegin', `<span class='invalid-url'>${msg}</span>`);
@@ -50,6 +39,7 @@ const insertErrorMsg = (msg) => {
 
 const fetchLink = async (url) => {
   const response = await fetch(url);
+  console.log(response)
   return response.json();
 };
 
@@ -84,8 +74,7 @@ const attachedCopyEvent = () => {
     allCopyBtn.forEach((button) => {
         button.addEventListener('click', (e) => {
             const button = e.target;
-            const shortlink = button.previousElementSibling.textContent;
-            console.log(shortlink.textContent)
+            const shortlink = button.previousElementSibling.textContent;          
             copyShortLink(button, shortlink)
         })
     })
@@ -104,10 +93,13 @@ const getShortLink = (e) => {
   if (longlink !== '') {
     if (isValidURL(longlink)) { // Check if supplied link is a valid url
       const url = baseUrl(longlink);
-
+      insertloading();
       fetchLink(url).then((res) => {
-        linkCard(longlink, res.result.short_link);
-        linkInput.value = '';       
+        if(res.ok){         
+          removeloading();
+          linkCard(longlink, res.result.short_link);
+          linkInput.value = '';
+        }    
         return res;
       }).then((response) => {
         attachedCopyEvent();
