@@ -7,6 +7,7 @@ import hamburger from '../images/menu-icon.svg';
 import iconBrandRecog from '../images/icon-brand-recognition.svg';
 import iconDetailedRecords from '../images/icon-detailed-records.svg';
 import iconFullyCustomizable from '../images/icon-fully-customizable.svg';
+import uniqid from 'uniqid';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
@@ -36,10 +37,10 @@ const linkCard = (longlink, shortlink) => {
           <span class="long-link">${longlink}</span>
           <div>
             <span class="short-link">${shortlink}</span>
-            <button type="button" class="btn btn-close">Copy</button>
+            <button type="button" id='${uniqid()}' class="btn btn-copy">Copy</button>
           </div>          
   </li> `;
-  document.querySelector('.link-result').insertAdjacentHTML('afterbegin', element);
+  document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
 };
 
 const insertErrorMsg = (msg) => {
@@ -57,6 +58,42 @@ const isValidURL = (urlString) => {
   return regexPattern.test(urlString);
 };
 
+const copyShortLink = (targetBtn,shortlink) => {   
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = shortlink;
+    console.log(input.value)
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(input.value);
+
+    const allCopyBtn = document.querySelectorAll('.btn-copy');
+    allCopyBtn.forEach((button) => {
+        button.classList.remove('copied');
+        button.textContent = 'Copy';
+        if(button.id === targetBtn.id){
+          button.classList.add('copied');
+          button.textContent = 'Copied!';  
+        }
+    })
+          
+}
+
+const attachedCopyEvent = () => {
+    const allCopyBtn = document.querySelectorAll('.btn-copy');
+    allCopyBtn.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const button = e.target;
+            const shortlink = button.previousElementSibling.textContent;
+            console.log(shortlink.textContent)
+            copyShortLink(button, shortlink)
+        })
+    })
+    
+    
+}
+
+
 const getShortLink = (e) => {
   e.preventDefault();
   const baseUrl = (url) => `https://api.shrtco.de/v2/shorten?url=${url}`;
@@ -70,7 +107,11 @@ const getShortLink = (e) => {
 
       fetchLink(url).then((res) => {
         linkCard(longlink, res.result.short_link);
-        linkInput.value = '';
+        linkInput.value = '';       
+        return res;
+      }).then((response) => {
+        attachedCopyEvent();
+        return response;
       });
     } else {
       insertErrorMsg('Please add a valid link');
@@ -98,3 +139,4 @@ const getShortLink = (e) => {
 
 const shortenBtn = document.querySelector('#url-form button');
 shortenBtn.addEventListener('click', getShortLink);
+

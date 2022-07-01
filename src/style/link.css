@@ -33,7 +33,7 @@
   text-align: left;
 }
 
-.btn-close {
+.btn-copy {
   width: 100%;
   font-weight: bold;
   border-radius: 5px;
@@ -46,6 +46,10 @@
   z-index: 3;
   left: 2rem;
   bottom: 0.35rem;
+}
+
+.copied {
+  background-color: var(--DarkViolet) !important;
 }
 
 @media screen and (min-width: 764px) {
@@ -63,17 +67,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    width: 30%;
+    width: 25%;
   }
 
   .long-link {
     border-bottom: none;
-    width: 70%;
+    width: 65%;
     padding: 0;
     color: var(--VeryDarkViolet);
   }
 
-  .btn-close {
+  .btn-copy {
     width: 30%;
     font-weight: bold;
     border-radius: 5px;
