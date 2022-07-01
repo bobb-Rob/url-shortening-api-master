@@ -16,7 +16,7 @@ const linkCard = (longlink, shortlink) => {
           <span class="long-link">${longlink}</span>
           <div>
             <span class="short-link">${shortlink}</span>
-            <button type="button" id='${uniqid()}' class="btn btn-copy">Copy</button>
+            <button type="button" id='${uniqid()}' class="btn-copy">Copy</button>
           </div>          
   </li> `;
   document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
@@ -131,4 +131,16 @@ const getShortLink = (e) => {
 
 const shortenBtn = document.querySelector('#url-form button');
 shortenBtn.addEventListener('click', getShortLink);
+
+const hamburgerBtn = document.querySelector('.hamburger-btn');
+hamburgerBtn.addEventListener('click', () => {
+    const menu = document.querySelector('#mobile-menu');
+    menu.classList.add('active');
+});
+
+const menuClose = document.querySelector('.menu-close-icon');
+menuClose.addEventListener('click', () => {
+    const menu = document.querySelector('#mobile-menu');
+    menu.classList.remove('active');
+})
 

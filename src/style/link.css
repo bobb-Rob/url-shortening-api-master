@@ -37,6 +37,13 @@
   width: 100%;
   font-weight: bold;
   border-radius: 5px;
+  height: 2.5rem; 
+  border-radius: 2rem;
+  background-color: var(--Cyan);
+  border: none;
+  font-family: var(--poppins);
+  color: var(--white);
+  cursor: pointer;
 }
 
 .invalid-url {
