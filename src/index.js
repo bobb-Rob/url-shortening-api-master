@@ -1,34 +1,13 @@
 /* eslint-disable no-useless-escape */
 
-import logoBottom from '../images/logo-bottom.svg';
-import logo from '../images/logo.svg';
-import illustrationImg from '../images/illustration-working.svg';
-import hamburger from '../images/menu-icon.svg';
-import iconBrandRecog from '../images/icon-brand-recognition.svg';
-import iconDetailedRecords from '../images/icon-detailed-records.svg';
-import iconFullyCustomizable from '../images/icon-fully-customizable.svg';
+import uniqid from 'uniqid';
+import insertImages from './modules/images.js';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
 import './style/link.css';
 
-const logoEl = document.querySelector('.logo');
-logoEl.src = logo;
-
-const bottomLogoEl = document.querySelector('.logo-bottom');
-bottomLogoEl.src = logoBottom;
-
-const hamburgerEl = document.querySelector('.hamburger');
-hamburgerEl.src = hamburger;
-
-const illustration = document.querySelector('.bg-illustration > img');
-illustration.src = illustrationImg;
-
-const allStatisticsIcons = document.querySelectorAll('.statistics-icon-wrapper > img');
-const [icon1, icon2, icon3] = allStatisticsIcons;
-icon1.src = iconBrandRecog;
-icon2.src = iconDetailedRecords;
-icon3.src = iconFullyCustomizable;
+insertImages();
 
 const linkCard = (longlink, shortlink) => {
   const element = `
@@ -36,11 +15,40 @@ const linkCard = (longlink, shortlink) => {
           <span class="long-link">${longlink}</span>
           <div>
             <span class="short-link">${shortlink}</span>
-            <button type="button" class="btn btn-close">Copy</button>
+            <button type="button" id='${uniqid()}' class="btn-copy">Copy</button>
           </div>          
   </li> `;
-  document.querySelector('.link-result').insertAdjacentHTML('afterbegin', element);
+  document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
 };
+
+const insertloading = () => {
+  const element = `
+    <div class='loader-wrapper'>
+      <div class="loader"></div>
+    </div>`;
+  document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
+};
+
+const failedToFetcherrorMessage = () => {
+  const element = `
+    <div class='error-modal'>
+    <div class='error-pop-up'>
+        <h3>Error</h3>
+        <span>Failed to fetch short link:</span> <br>
+        <span>Please try again</span> <br>
+        <button type='button' class='btn error-ok-btn'>OK</button>
+    </div>
+  </div>`;
+  document.querySelector('body').insertAdjacentHTML('afterbegin', element);
+};
+
+const errorOkBtnEvent = () => {
+  document.querySelector('.error-ok-btn').addEventListener('click', () => {
+    document.querySelector('.error-modal').remove();
+  });
+};
+
+const removeloading = () => document.querySelector('.loader-wrapper').remove();
 
 const insertErrorMsg = (msg) => {
   document.querySelector('.get-link-section')
@@ -57,6 +65,36 @@ const isValidURL = (urlString) => {
   return regexPattern.test(urlString);
 };
 
+const copyShortLink = (targetBtn, shortlink) => {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = shortlink;
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+
+  const allCopyBtn = document.querySelectorAll('.btn-copy');
+  allCopyBtn.forEach((button) => {
+    button.classList.remove('copied');
+    button.textContent = 'Copy';
+    if (button.id === targetBtn.id) {
+      button.classList.add('copied');
+      button.textContent = 'Copied!';
+    }
+  });
+};
+
+const attachedCopyEvent = () => {
+  const allCopyBtn = document.querySelectorAll('.btn-copy');
+  allCopyBtn.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const button = e.target;
+      const shortlink = button.previousElementSibling.textContent;
+      copyShortLink(button, shortlink);
+    });
+  });
+};
+
 const getShortLink = (e) => {
   e.preventDefault();
   const baseUrl = (url) => `https://api.shrtco.de/v2/shorten?url=${url}`;
@@ -67,10 +105,26 @@ const getShortLink = (e) => {
   if (longlink !== '') {
     if (isValidURL(longlink)) { // Check if supplied link is a valid url
       const url = baseUrl(longlink);
-
+      insertloading();
       fetchLink(url).then((res) => {
-        linkCard(longlink, res.result.short_link);
-        linkInput.value = '';
+        if (res.ok) {
+          removeloading();
+          linkCard(longlink, res.result.short_link);
+          linkInput.value = '';
+        } else {
+          setTimeout(() => {
+            removeloading();
+            failedToFetcherrorMessage();
+            errorOkBtnEvent();
+          }, 4000);
+        }
+        return res;
+      }).then((response) => {
+        attachedCopyEvent();
+        return response;
+      }).catch(() => {
+        failedToFetcherrorMessage();
+        errorOkBtnEvent();
       });
     } else {
       insertErrorMsg('Please add a valid link');
@@ -98,3 +152,15 @@ const getShortLink = (e) => {
 
 const shortenBtn = document.querySelector('#url-form button');
 shortenBtn.addEventListener('click', getShortLink);
+
+const hamburgerBtn = document.querySelector('.hamburger-btn');
+hamburgerBtn.addEventListener('click', () => {
+  const menu = document.querySelector('#mobile-menu');
+  menu.classList.add('active');
+});
+
+const menuClose = document.querySelector('.menu-close-icon');
+menuClose.addEventListener('click', () => {
+  const menu = document.querySelector('#mobile-menu');
+  menu.classList.remove('active');
+});

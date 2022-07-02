@@ -5,81 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/654cf8d94e.js" crossorigin="anonymous"></script>  
+  <title>Shortly URL shortening API Challenge</title>  
 <script defer src="main.js"></script></head>
 <body>
 
-  Features
-  Pricing
-  Resources
+  <nav class="navbar" > 
+    <a href="" class="logo-link">
+      <img src="" class="logo" alt="Shortly Logo">
+    </a>
+    <div class="menu-container" id='mobile-menu' >
+      <i class="fa-solid fa-xmark menu-close-icon"></i>
+      <div class="nav-links">    
+        <a class="features-link" href="#">Features</a>    
+        <a class="pricing-link" href="#">Pricing</a> 
+        <a class="resources-link" href="#"> Resources</a>   
+      </div>
+      <div>
+          <button class="login-btn">Login</button>
+          <button class="btn sign-up-btn">Sign-Up</button>
+      </div>           
+    </div>
+    <button class="hamburger-btn">
+      <img src="" class="hamburger" alt="hamburger">
+    </button>    
+  </nav>
 
-  Login
-  Sign Up
-
-  More than just shorter links
-
-  Build your brand’s recognition and get detailed insights 
-  on how your links are performing.
-
-  Get Started
+  <section class="header-section">
+    <div class="bg-illustration">
+      <img src="" alt="Illustration">
+    </div>
+    <div class="header-container">
+      <h1>More than just<br>shorter links</h1>
+      <p> Build your brand’s recognition and get detailed insights 
+        on how your links are performing.
+      </p>
+      <button class="btn get-started-btn">Get Started</button>
+    </div>      
+  </section>
   
-  Shorten a link here...
-
-  Shorten It!
-
-  Advanced Statistics
-
-  Track how your links are performing across the web with our 
-  advanced statistics dashboard.
-
-  Brand Recognition
-
-  Boost your brand recognition with each click. Generic links don’t 
-  mean a thing. Branded links help instil confidence in your content.
-
-  Detailed Records
-
-  Gain insights into who is clicking your links. Knowing when and where 
-  people engage with your content helps inform better decisions.
-
-  Fully Customizable
-
-  Improve brand awareness and content discoverability through customizable 
-  links, supercharging audience engagement.
-
-  Boost your links today
-
-  Get Started
-
-  Features
-
-  Link Shortening
-  Branded Links
-  Analytics
-
-  Resources
-
-  Blog
-  Developers
-  Support
-
-  Company
-
-  About
-  Our Team
-  Careers
-  Contact
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <main class="main-container">    
+    <section class="get-link-section">     
+      <form action="#" id="url-form">
+        <input type="url" name="link-input" id="link-input" placeholder="Shorten a link here...">
+        <button class="btn">Shorten It!</button>
+      </form>      
+    </section>
+    <section class="analysis-section">
+      <ul class="link-result">
+                          
+      </ul>
+      <div class="statistic-header">
+        <h2>Advanced Statistics</h2>
+        <p>Track how your links are performing across the web with our 
+          advanced statistics dashboard.</p>
+      </div>
+      <ul class="statistics-list">
+        <li>
+          <div class="statistics-icon-wrapper">
+            <img src="" alt="Icon">
+          </div>
+          <h3> Brand Recognition</h3>
+          <p>Boost your brand recognition with each click. Generic links don’t 
+            mean a thing. Branded links help instil confidence in your content.</p>
+        </li>
+        <li>
+          <div class="statistics-icon-wrapper bar bar-destop1">
+            <img src="" alt="Icon">
+          </div>         
+          <h3>Detailed Records</h3>
+          <p>Gain insights into who is clicking your links. Knowing when and where 
+            people engage with your content helps inform better decisions.
+          </p>
+        </li>
+        <li>
+          <div class="statistics-icon-wrapper bar bar-destop2">
+            <img src="" alt="Icon">
+          </div>
+          <h3>Fully Customizable</h3>
+          <p>Improve brand awareness and content discoverability through customizable 
+            links, supercharging audience engagement.
+          </p>
+        </li>
+      </ul>      
+    </section>
+  </main>
+  <div class="boost-link-section">
+    <h3>Boost your links today</h3>
+    <button class="btn get-started-btn" >Get Started</button>
   </div>
+    <section class="app-footer">
+      <div class="footer-logo-wrap">
+        <a href="#">
+          <img src="" alt="Shortly Logo" class="logo-bottom">
+        </a>
+      </div>      
+        <ul class="footer-link-wrapper">
+          <li class="footer-heading">Features
+            <ul>
+              <li>Link Shortening</li>
+              <li>Branded Links</li>
+              <li>Analytics</li>
+            </ul>
+          </li>
+          <li class="footer-heading">Resources
+            <ul>
+              <li>Blog</li>
+              <li>Developers</li>
+              <li>Support</li>
+            </ul>
+          </li>          
+          <li class="footer-heading">Company
+            <ul>
+              <li>About</li>
+              <li>Our Team</li>
+              <li>Careers</li>
+              <li>Contact</li>
+            </ul>
+          </li>
+          <li>
+            <ul class="footer-social-icons">
+              <li>
+                <i class="fa-brands fa-facebook-square"></i>
+              </li>
+              <li>
+                <i class="fa-brands fa-twitter"></i>
+              </li>
+              <li><i class="fa-brands fa-pinterest"></i></li>
+              <li><i class="fa-brands fa-instagram"></i></li>
+            </ul>
+          </li>
+        </ul>    
+    </section> 
 </body>
 </html>
