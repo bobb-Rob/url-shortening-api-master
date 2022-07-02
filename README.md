@@ -35,7 +35,7 @@ Users should be able to:
 
 |![Desktop view](./Desktop-Shortly-URL-shortening-API-Challenge.png) |
 
-[Mobile view](./Mobile-Shortly-URL-shortening-API-Challenge.png) |
+![Mobile view](./Mobile-Shortly-URL-shortening-API-Challenge.png) |
 
 
 ### Links
