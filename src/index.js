@@ -2,7 +2,6 @@
 
 import insertImages from './modules/images';
 import uniqid from 'uniqid';
-import store from './modules/localStorage';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
@@ -28,6 +27,25 @@ const insertloading = () => {
       <div class="loader"></div>
     </div>`;
     document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
+};
+
+const failedToFetcherrorMessage = () => {
+    const element = `
+    <div class='error-modal'>
+    <div class='error-pop-up'>
+        <h3>Error</h3>
+        <span>Failed to fetch short link:</span> <br>
+        <span>Please try again</span> <br>
+        <button type='button' class='btn error-ok-btn'>OK</button>
+    </div>
+  </div>`;
+    document.querySelector('body').insertAdjacentHTML('afterbegin', element);
+}
+
+const errorOkBtnEvent = () => {
+    document.querySelector('.error-ok-btn').addEventListener('click', () => {
+        document.querySelector('.error-modal').remove();
+    })
 }
 
 const removeloading = () => document.querySelector('.loader-wrapper').remove();
@@ -99,11 +117,20 @@ const getShortLink = (e) => {
           removeloading();
           linkCard(longlink, res.result.short_link);
           linkInput.value = '';
-        }    
+        }else {
+            setTimeout(() => {
+              removeloading();
+              failedToFetcherrorMessage();
+              errorOkBtnEvent();
+            },5000);            
+        }
         return res;
       }).then((response) => {
         attachedCopyEvent();
         return response;
+      }).catch(() => {
+        failedToFetcherrorMessage();
+        errorOkBtnEvent();
       });
     } else {
       insertErrorMsg('Please add a valid link');

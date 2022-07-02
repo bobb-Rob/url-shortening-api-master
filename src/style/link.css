@@ -19,6 +19,7 @@
   border-bottom: 1px solid var(--Gray);
   padding: 0.55rem 1rem;
   color: var(--VeryDarkViolet);
+  width: 100%;
 }
 
 .short-link {
@@ -31,6 +32,37 @@
   font-size: 1rem;
   word-break: break-all;
   text-align: left;
+}
+
+.link-result {
+    position: relative;
+}
+
+.error-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;  
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgba(158, 155, 155, 0.5);
+    z-index: 6;
+    backdrop-filter: blur(10px);
+}
+
+.error-pop-up {
+    text-align: center;    
+}
+
+.error-pop-up h3 {
+   color: var(--Red);   
+}
+
+.error-ok-btn {
+  width: 100px;
+  margin-top: 1rem;
 }
 
 .btn-copy {

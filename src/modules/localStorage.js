@@ -1,5 +1,4 @@
 
-
 const store = (() => {
     const getLinks = () => localStorage.getItem('links') || [];
 
@@ -12,5 +11,3 @@ const store = (() => {
     return { getLinks, addShortLinks }
 })();
 
-
-export default store;
