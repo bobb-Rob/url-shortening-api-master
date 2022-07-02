@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 
-import insertImages from './modules/images';
 import uniqid from 'uniqid';
+import insertImages from './modules/images.js';
 import './style/style.css';
 import './style/headline.css';
 import './style/statistic.css';
@@ -22,15 +22,15 @@ const linkCard = (longlink, shortlink) => {
 };
 
 const insertloading = () => {
-    const element = `
+  const element = `
     <div class='loader-wrapper'>
       <div class="loader"></div>
     </div>`;
-    document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
+  document.querySelector('.link-result').insertAdjacentHTML('beforeend', element);
 };
 
 const failedToFetcherrorMessage = () => {
-    const element = `
+  const element = `
     <div class='error-modal'>
     <div class='error-pop-up'>
         <h3>Error</h3>
@@ -39,14 +39,14 @@ const failedToFetcherrorMessage = () => {
         <button type='button' class='btn error-ok-btn'>OK</button>
     </div>
   </div>`;
-    document.querySelector('body').insertAdjacentHTML('afterbegin', element);
-}
+  document.querySelector('body').insertAdjacentHTML('afterbegin', element);
+};
 
 const errorOkBtnEvent = () => {
-    document.querySelector('.error-ok-btn').addEventListener('click', () => {
-        document.querySelector('.error-modal').remove();
-    })
-}
+  document.querySelector('.error-ok-btn').addEventListener('click', () => {
+    document.querySelector('.error-modal').remove();
+  });
+};
 
 const removeloading = () => document.querySelector('.loader-wrapper').remove();
 
@@ -57,7 +57,6 @@ const insertErrorMsg = (msg) => {
 
 const fetchLink = async (url) => {
   const response = await fetch(url);
-  console.log(response)
   return response.json();
 };
 
@@ -66,40 +65,35 @@ const isValidURL = (urlString) => {
   return regexPattern.test(urlString);
 };
 
-const copyShortLink = (targetBtn,shortlink) => {   
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = shortlink;
-    console.log(input.value)
-    input.select();
-    input.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(input.value);
+const copyShortLink = (targetBtn, shortlink) => {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = shortlink;
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
 
-    const allCopyBtn = document.querySelectorAll('.btn-copy');
-    allCopyBtn.forEach((button) => {
-        button.classList.remove('copied');
-        button.textContent = 'Copy';
-        if(button.id === targetBtn.id){
-          button.classList.add('copied');
-          button.textContent = 'Copied!';  
-        }
-    })
-          
-}
+  const allCopyBtn = document.querySelectorAll('.btn-copy');
+  allCopyBtn.forEach((button) => {
+    button.classList.remove('copied');
+    button.textContent = 'Copy';
+    if (button.id === targetBtn.id) {
+      button.classList.add('copied');
+      button.textContent = 'Copied!';
+    }
+  });
+};
 
 const attachedCopyEvent = () => {
-    const allCopyBtn = document.querySelectorAll('.btn-copy');
-    allCopyBtn.forEach((button) => {
-        button.addEventListener('click', (e) => {
-            const button = e.target;
-            const shortlink = button.previousElementSibling.textContent;          
-            copyShortLink(button, shortlink)
-        })
-    })
-    
-    
-}
-
+  const allCopyBtn = document.querySelectorAll('.btn-copy');
+  allCopyBtn.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const button = e.target;
+      const shortlink = button.previousElementSibling.textContent;
+      copyShortLink(button, shortlink);
+    });
+  });
+};
 
 const getShortLink = (e) => {
   e.preventDefault();
@@ -113,16 +107,16 @@ const getShortLink = (e) => {
       const url = baseUrl(longlink);
       insertloading();
       fetchLink(url).then((res) => {
-        if(res.ok){         
+        if (res.ok) {
           removeloading();
           linkCard(longlink, res.result.short_link);
           linkInput.value = '';
-        }else {
-            setTimeout(() => {
-              removeloading();
-              failedToFetcherrorMessage();
-              errorOkBtnEvent();
-            },5000);            
+        } else {
+          setTimeout(() => {
+            removeloading();
+            failedToFetcherrorMessage();
+            errorOkBtnEvent();
+          }, 4000);
         }
         return res;
       }).then((response) => {
@@ -161,13 +155,12 @@ shortenBtn.addEventListener('click', getShortLink);
 
 const hamburgerBtn = document.querySelector('.hamburger-btn');
 hamburgerBtn.addEventListener('click', () => {
-    const menu = document.querySelector('#mobile-menu');
-    menu.classList.add('active');
+  const menu = document.querySelector('#mobile-menu');
+  menu.classList.add('active');
 });
 
 const menuClose = document.querySelector('.menu-close-icon');
 menuClose.addEventListener('click', () => {
-    const menu = document.querySelector('#mobile-menu');
-    menu.classList.remove('active');
-})
-
+  const menu = document.querySelector('#mobile-menu');
+  menu.classList.remove('active');
+});
